@@ -1,89 +1,120 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
+using ll  = long long;
+using ull = unsigned ll;
+using ld  = long double;
+using pi  = pair<int, int>;
+using pii = pair<ll, ll>;
+using vi  = vector<int>;
+using vii = vector<ll>;
+using vip = vector<pair<int, int>>;
 
-string multiply(string num1, string num2)
+const int MAX_N = 1e5 + 1;
+const ll mod = 1e9 + 7;
+const ll INF = 1e9;
+
+#define ci cin
+#define co cout
+
+#define PI           3.141592653589793238
+#define w( n )       while( n-- )
+#define fir          first
+#define sec          second
+#define all(x)       (x).begin(),(x).end()
+#define rall(x)      (x).rbegin(),(x).rend()
+#define pb           push_back
+#define mp           make_pair
+#define loop(i,n,x)  for(int i=n;i<x;i++)
+#define sz(a)        ((int) (a).size())
+#define st(x)        sort( x.begin(), x.end() )
+#define For(n,x)     for(int i=1;i<=x;i++)
+#define ite          iterator it
+#define fast         ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define test         ll t;cin>>t; while(t--){solve();}
+#define in           insert
+#define el           endl
+
+void InputOutput()
 {
-    int len1 = num1.size();
-    int len2 = num2.size();
-    if (len1 == 0 || len2 == 0)
-    return "0";
+    #ifndef ONLINE_JUDGE
+    freopen("G:/Code/input.txt", "r", stdin);
+    freopen("G:/Code/output.txt", "w", stdout);
+    #endif
 
-  
-    vector<int> result(len1 + len2, 0);
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+}
 
-   
-    int i_n1 = 0;
-    int i_n2 = 0;
 
-   
-    for (int i=len1-1; i>=0; i--)
+void solve()
+{
+
+    string a,b;
+    while(cin>>a>>b)
     {
-        int carry = 0;
-        int n1 = num1[i] - '0';
-
-      
-        i_n2 = 0;
-
-     
-        for (int j=len2-1; j>=0; j--)
+        int arr[1000]={0};
+        int brr[1000],crr[1000];
+        int l1=a.size()-1;
+        int l2=b.size()-1;
+        for(int i=l1;i>=0;i--)
         {
-        
-            int n2 = num2[j] - '0';
-
-            int sum = n1*n2 + result[i_n1 + i_n2] + carry;
-
-            
-            carry = sum/10;
-
-            result[i_n1 + i_n2] = sum % 10;
-
-            i_n2++;
+            brr[l1-i]=a[i]-'0';
         }
 
-     
-        if (carry > 0)
-            result[i_n1 + i_n2] += carry;
 
-      
-        i_n1++;
+        for(int i=l2;i>=0;i--)
+        {
+          crr[l2-i]=b[i]-'0';
+        }
+
+        // for(int i=0;i<a.size();i++)
+        //     cout<<brr[i];
+        // cout<<endl;
+        //   for(int i=0;i<b.size();i++)
+        //     cout<<crr[i];
+        // cout<<endl;
+        for(int i=0;i<a.size();i++)
+        {
+            for(int j=0;j<b.size();j++)
+            {
+                arr[i+j]+=brr[i]*crr[j];
+                arr[i+j+1]+=arr[i+j]/10;
+                arr[i+j]%=10;
+
+                // cout<<arr[i+j]<<" "<<arr[i+j+1]<<endl;
+            }
+        }
+        int l=a.size()+b.size();
+              while(arr[l]==0&&l>0)
+                     {
+                        l--;
+                        // cout<<l;
+                     }
+              for(int i=l;i>=0;i--)
+                     cout<<arr[i];
+              cout<<endl;
+
     }
 
-  
-    int i = result.size() - 1;
-    while (i>=0 && result[i] == 0)
-    i--;
-
-    if (i == -1)
-    return "0";
-
-
-    string s = "";
-
-    while (i >= 0)
-        s += std::to_string(result[i--]);
-
-    return s;
 }
+
 
 
 int main()
 {
-    string str1;
-    string str2;
-    cin>>str1>>str2;
-
-    if((str1.at(0) == '-' || str2.at(0) == '-') &&
-        (str1.at(0) != '-' || str2.at(0) != '-' ))
-        cout<<"-";
 
 
-    if(str1.at(0) == '-')
-        str1 = str1.substr(1);
+    fast;
+    InputOutput();
+     solve();
+//     test;
 
-    if(str2.at(0) == '-')
-        str2 = str2.substr(1);
 
-    cout << multiply(str1, str2)<<endl;
+
+#ifndef ONLINE_JUDGE
+    cerr <<el<< "Time : " << 1000 * ((double)clock()) / (double)CLOCKS_PER_SEC << "ms\n";
+#endif
     return 0;
 }
+
+
