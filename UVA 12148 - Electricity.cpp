@@ -82,10 +82,11 @@ void solve()
 {
 
     int n,kwh, d, pd, m, pm, y, py, pkwh;
-	string s;
-    
-    while(cin>>n && n)
+  
+    while(cin>>n)
     {
+    	if(n==0)
+    		return;
         int cnt=0, ans=0;
         for(int i=0;i<n;i++)
         {
@@ -103,7 +104,7 @@ void solve()
             py=y;
             pkwh=kwh;
         }
-        cout<< cnt << " "<<ans<<"\n";
+        cout<<cnt<< " "<<ans<<endl;
     }
 
 }
