@@ -57,7 +57,7 @@ void solve()
 		int u,v;
 		cin>>u>>v;
 		graph[u].push_back(v);
-		// graph[v].push_back(u);
+		 graph[v].push_back(u);
 	}
 
 	for(int i=0;i<node;i++)
