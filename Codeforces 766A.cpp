@@ -45,53 +45,17 @@ void InputOutput()
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 }
 
-char graph[30][30];
-bool visited[30][30];
-int dx[]={-1,1,0,0,-1,-1,1,1};
-int dy[]={0,0,-1,1,-1,1,-1,1};
 
-bool valid(int x,int y)
-{
-	return(x>=0 && x<5 && y>=0 && y<5 && !visited[x][y] && graph[x][y]=='1');
-}
-void dfs(int x,int y)
-{
-	if(visited[x][y])return;
-	visited[x][y]=1;
-	for(int i=0;i<8;i++)
-	{
-		int next_x = x + dx[i];
-		int next_y = y + dy[i];
-
-		if(valid(next_x,next_y))
-			dfs(next_x,next_y);
-	}
-}
 void solve()
 {
 
-	int n;
-	while(cin>>n)
-	{
-		
-		loop(i,0,n)
-			cin>>graph[i];
-		
-		int count=0;
-		memset(visited,0,sizeof(visited));
-		loop(i,0,n)
-		{
-			loop(j,0,n)
-			{
-				if(!visited[i][j] && graph[i][j]=='1')
-				{
-					dfs(i,j);
-					count++;
-				}
-			}
-		}
-		cout<<count<<endl;
-    }
+	string a,b;
+    cin >> a >> b;
+    if (a==b)
+    cout << -1;
+    else
+    cout << max(a.size(),b.size());
+
 }
 
 
@@ -113,4 +77,4 @@ int main()
     return 0;
 }
 
-
+ 
