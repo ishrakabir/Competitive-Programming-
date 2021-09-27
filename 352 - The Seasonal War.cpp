@@ -34,6 +34,7 @@ const ll INF = 1e9;
 #define test         ll t;cin>>t; while(t--){solve();}
 #define in           insert
 #define el           endl
+#define clr(a) 		 memset(a,0,sizeof(a))
 
 void InputOutput()
 {
@@ -50,7 +51,7 @@ bool visited[30][30];
 int dx[]={-1,1,0,0,-1,-1,1,1};
 int dy[]={0,0,-1,1,-1,1,-1,1};
 int n;
- 
+
 bool valid(int i,int j)
 {
 	return (i >= 0 && j >= 0 && i < n && j < n&& !visited[i][j] && graph[i][j] == '1');
@@ -73,30 +74,38 @@ void dfs(int x,int y)
 
 void solve()
 {
+ 	int c=1;
+    while(cin>>n)
+    {
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                cin>>graph[i][j];
+            }
+        }
 
-	int t = 1;
-	while(scanf("%d",&n) != EOF)
-	{
-		for(int i = 0 ; i < n ; ++i)
-		{
-			scanf("%s",graph[i]);
-		}
-		memset(visited,0,sizeof(visited));
-		int count = 0;
-		for(int i = 0 ; i < n ; ++i)
-		{
-			for(int j = 0 ; j < n ; ++j)
-			{
-				if(!visited[i][j] && graph[i][j] == '1')
-				{
-					dfs(i,j);
-					count++;
-				}
-			}
-		}
-		cout<<"Image number "<<t<<" contains "<<count<<" war eagles."<<endl;
-		t++;
-	}
+        memset(visited,0,sizeof(visited));
+        int count=0;
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+
+                if(!visited[i][j]&&graph[i][j]=='1')
+                {
+                    count++;
+
+                    dfs(i,j);
+                }
+
+            }
+
+        }
+        cout<<"Image number "<<c<<" contains "<<count<<" war eagles."<<endl;
+		c++;
+    }
 
 }
 
@@ -118,5 +127,3 @@ int main()
 #endif
     return 0;
 }
-
-
