@@ -58,16 +58,17 @@ bool dfs(int source, int curr, int &count)
     vis[source] = 1;
  
    for(int i=0;i<graph[source].size();i++) 
-    	{
-    		int next=graph[source][i];
-    		if(next != curr)
-    		{
-       		 ++count;
- 
-        if(dfs(next, source, count) == 1)
-            return 1;
-   			}
-		}
+        {
+
+            int next=graph[source][i];
+            if(next != curr)
+            {
+             count++;
+
+               if(dfs(next, source, count) == 1)
+               return 1;
+            }
+        }
     return 0;
 }
 
@@ -92,14 +93,15 @@ void solve()
  
     loop(i,0, n) 
     {
-    	if(!vis[i])
-   	    {
+        if(!vis[i])
+        {
         int cnt = 0;
- 
         bool solve = dfs(i, -1, cnt);
- 
+        // cout<<"cnt = "<<cnt<<" ans = ";
         if(solve == 1) 
-            ans += (cnt % 2 == 1);
+            if((cnt % 2 == 1))
+              ans ++;
+        // cout<<ans<<" "<<endl;
         }
     }
     if( (n - ans) % 2 == 1)
