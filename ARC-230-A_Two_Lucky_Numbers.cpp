@@ -48,9 +48,9 @@ void solve()
     int a, b;
     cin >> a >> b;
     if (b % 2 == 1)
-        cout << a << b / 2 << "9\n";
+        cout << a << b / 2 << "5"<<el;
     else
-        cout << a << b / 2 << '\n';
+        cout << a << b / 2 <<el;
 }
 
 int main()
