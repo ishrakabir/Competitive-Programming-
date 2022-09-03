@@ -45,10 +45,49 @@ const ll INF = 1e9;
 
 void solve()
 {
-    while(1)
+
+    string str;
+    vector<vector<string>> vv(1005);
+    int i = 0;
+    map<int, int> mp;
+    // memset(size, 0, sizeof(size));
+    while (1)
     {
+        getline(cin, str);
+        stringstream ss(str);
+        string word;
+        int k = 1;
+        while (ss >> word)
+        {
+            vv[i].push_back(word);
+            int l = max(mp[k], (int)word.size());
+            mp[k] = l;
+            k++;
+        }
+        i++;
+        if (cin.eof())
+            break;
     }
-   
+    for (int i = 0; i < vv.size()-1; i++)
+    {
+        for (int j = 0; j < vv[i].size(); j++)
+        {
+            if (j == vv[i].size() - 1)
+                cout << vv[i][j] << el;
+            else
+            {
+                int x = vv[i][j].size();
+                int diff = mp[j + 1] - x;
+                cout << vv[i][j] << " ";
+                // cout<<vv[i][j]<<" "<<x<<" : "<<diff<<"   ";
+                if (diff > 0)
+                    for (int k = 0; k < diff; k++)
+                    {
+                        cout << " ";
+                    }
+            }
+        }
+    }
 }
 
 int main()
