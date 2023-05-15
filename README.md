@@ -1,2 +1,10 @@
 # Competitive-Programming-
-Solutions !! ..................................  ABC=Atcoder Beginner Contest  ARC=Atcoder Regular Contest
+Solutions !! ..................................
+
+<hr>
+
+ABC=Atcoder Beginner Contest
+
+<hr>
+
+ARC=Atcoder Regular Contest
